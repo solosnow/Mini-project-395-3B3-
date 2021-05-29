@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
+    <title>Problem Solving</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Hybrid Simulations</a>
+        </div>
+      </nav>
+      <div class="container">
+          <br>
+          <h3 class="text-primary"><i> Cantilever beam subjected to point load at its end in downward direction</i></h3><br>
+    <div class="row g-5">
+    <div class="col-md-5 col-lg-4 order-md-last">
+        <img src="xzxz.jpg" width="100%" height="100%">
+    </div>
+      <div class="col-md-7 col-lg-8">
+        
+        <h4 class="mb-3">Input Values</h4>
+        <form class="needs-validation" novalidate="">
+          <div class="row g-3">
+            
+
+            <div class="col-12">
+              <label for="email" class="form-label">Load</label>
+              <input type="text" class="form-control" id="Load" placeholder="Load should be in Newtons">
+              <div class="invalid-feedback">
+                Please enter a valid email address for shipping updates.
+              </div>
+            </div>
+
+            <div class="col-12">
+              <label for="address" class="form-label">Length</label>
+              <input type="text" class="form-control" id="Length" placeholder="Length should be in Meters" required="">
+            </div>
+
+            <div class="col-12">
+                <label for="address" class="form-label">Flexural Rigidity (Ei) </label>
+                <input type="text" class="form-control" id="FleRig" placeholder="(Ei) should me N-m" required="">
+                <div class="invalid-feedback">
+                  Please enter your shipping address.
+                </div>
+              </div>
+          <a class="w-100 btn btn-primary btn-lg" id="button" type="submit">Check your Results</a>
+        </form>
+        
+      </div>
+    </div>
+      </div>
+
+      <br>
+      <div class="bg-success p-4">
+          <text style="color: azure;"> <b><h5>
+     
+            <p id="gload"></p>
+            <p id="glength"></p>
+            <p id="gflexrig"></p>
+            <p id="ans"></p>
+        </h5></b> </text>
+      </div>
+         
+      
+      <br>
+      <br>
+      <br>
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script> -->
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    
+    <!-- <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script> -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script> -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+    <script>
+
+        $('#button').click(function(e){
+        var load=document.getElementById('Load');
+        var length=document.getElementById('Length');
+        var flexRig=document.getElementById('FleRig');
+        var result=document.getElementById('ans');
+        var gload=document.getElementById('gload'); 
+        var glength=document.getElementById('glength'); 
+        var gflexrig=document.getElementById('gflexrig'); 
+        if(load.value!="" && length.value!="" && flexRig.value!=""){
+          var loadV=parseFloat(load.value);
+          var lengthV=parseFloat(length.value);
+          var flexRigV=parseFloat(flexRig.value);
+          var answer=(loadV*lengthV*lengthV*lengthV)/(3*flexRigV);
+          gload.innerHTML="load: "+loadV;
+          glength.innerHTML="length: "+lengthV;
+          gflexrig.innerHTML="Flexural Rigidity(Ei): "+flexRigV;
+          result.innerHTML="Answer: "+answer+" N-m";
+        }
+        else{
+          alert("Incomplete Data, Please enter all fields");
+        }
+
+      });
+        
+
+    </script>
+  </body>
+
+</html>
